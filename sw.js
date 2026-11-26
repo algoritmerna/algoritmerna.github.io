@@ -1,6 +1,6 @@
 // Uppställningar – offline-stöd. Byt VERSION när filerna ändras (bygg.py gör det automatiskt).
-const VERSION = 'upst-363ebe9b';
-const FILER = ['./', 'index.html', 'stil.css?v=363ebe9b', 'uppstallning.js?v=363ebe9b', 'manifest.webmanifest',
+const VERSION = 'upst-3812431e';
+const FILER = ['./', 'index.html', 'stil.css?v=363ebe9b', 'uppstallning.js?v=3812431e', 'manifest.webmanifest',
   'bilder/kompass.png', 'bilder/ikon-192.png', 'bilder/ikon-512.png'];
 self.addEventListener('install', e => {
   e.waitUntil(caches.open(VERSION).then(c => c.addAll(FILER)).then(() => self.skipWaiting()));
