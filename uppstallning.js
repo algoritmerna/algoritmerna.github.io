@@ -633,6 +633,7 @@
   var METOD = [['kort', 'Kort division', 'Resten som liten siffra'], ['trappa', 'Trappan', 'Nämnaren till vänster'], ['stol', 'Liggande stolen', 'Nämnaren till höger']];
   var SATT = [['add', '+', 'Addition'], ['sub', '−', 'Subtraktion'], ['mul', '·', 'Multiplikation'], ['div', '÷', 'Division']];
   function rita_start() {
+    R.setAttribute('data-op', S.typ);
     R.innerHTML = '<div class="v-box"><span class="v-et">1. Välj räknesätt</span><div class="v-satt" role="group" aria-label="Räknesätt">' +
       SATT.map(function (x) { return '<button data-typ="' + x[0] + '" class="' + (S.typ === x[0] ? 'on' : '') + '" aria-pressed="' + (S.typ === x[0]) + '"><b aria-hidden="true">' + x[1] + '</b><span>' + x[2] + '</span></button>'; }).join('') + '</div>' +
       '<div class="v-tva"><div><span class="v-et">2. Välj nivå</span><div class="v-seg" role="group" aria-label="Nivå">' +
@@ -664,7 +665,7 @@
     if (b.dataset.lage) { S.lage = b.dataset.lage; spara(); return rita_start(); }
     if (b.dataset.d !== undefined) return siffra(+b.dataset.d);
     var g = b.dataset.g;
-    if (g === 'borja') { vald = true; nyRunda(); R.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
+    if (g === 'borja') { R.setAttribute('data-op', S.typ); vald = true; nyRunda(); R.scrollIntoView({ block: 'start', behavior: 'smooth' }); return; }
     if (g === 'byt') { vald = false; rita_start(); return; }
     if (g === 'sudda') return sudda();
     if (g === 'ratta') return ratta();
